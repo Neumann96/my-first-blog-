@@ -27,7 +27,7 @@ class kkexam(models.Model):
     exam_date = models.DateTimeField(verbose_name="Дата проведения экзамена")
     image = models.ImageField(upload_to='exam_images/', verbose_name="Изображение задания")
     users = models.ManyToManyField(User, related_name='exams', verbose_name="Пользователи")
-    is_public = models.BooleanField(default=False, verbose_name="Публичный экзамен")
+    is_public = models.BooleanField(default=False, verbose_name="Опубликовано")
 
     def __str__(self):
         return self.name
