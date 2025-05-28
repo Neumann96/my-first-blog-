@@ -14,7 +14,7 @@
     <div style="border: 1px solid #333; padding: 10px; margin-bottom: 15px;">
         <p><strong>Название экзамена:</strong> {{ exam.name }}</p>
         <p><strong>Дата проведения экзамена:</strong> {{ exam.exam_date }}</p>
-        <p><strong>Изображение задания: {{exam.image.url}}</strong><br>
+        <p><strong>Изображение задания:</strong><br><br>
             {% if exam.image %}
                 <img src="{{ exam.image.url }}" alt="Задание" width="300">
             {% else %}
