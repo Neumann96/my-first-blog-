@@ -6,7 +6,10 @@ from django.shortcuts import render, get_object_or_404
 
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date').exclude(title__startswith='Первый')
+    # post = Post.objects.get(id=1)
+    # post.delete()
+
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 

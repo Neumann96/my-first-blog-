@@ -4,6 +4,11 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(status=Post.Status.PUBLISHED)
+
+
 class Post(models.Model):
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
@@ -12,6 +17,9 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+
+    objects = models.Manager()
+    published = PublishedManager()  # конкретно-прикладной менеджер
 
     def publish(self):
         self.published_date = timezone.now()
